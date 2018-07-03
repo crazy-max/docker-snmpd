@@ -60,6 +60,20 @@ $ docker run -d --name snmpd \
   crazymax/snmpd:latest
 ```
 
+## Notes
+
+If you've got the following error :
+
+```
+Cannot statfs /hostproc/sys/fs/binfmt_misc: Symbolic link loop
+```
+
+Restart this service :
+
+```
+systemctl restart proc-sys-fs-binfmt_misc.mount
+```
+
 ## Upgrade
 
 To upgrade, pull the newer image and launch the container :
