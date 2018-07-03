@@ -23,6 +23,7 @@ RUN apk add --update --no-cache \
     curl \
     perl \
     perl-net-snmp \
+    tzdata \
   && apk --update --no-cache add -t build-dependencies \
     build-base \
     file \
