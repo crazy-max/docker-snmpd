@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  snmpd:
+    image: crazymax/snmpd
+    container_name: snmpd
+    privileged: true
+    read_only: true
+    ports:
+      - target: 161
+        published: 161
+        protocol: udp
+    volumes:
+      - /proc:/hostproc
+    restart: always
