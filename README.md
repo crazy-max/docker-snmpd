@@ -46,6 +46,7 @@ $ docker run -d --name snmpd \
   --privileged \
   -p 161:161/udp \
   -v /proc:/hostproc \
+  -v /etc/localtime:/etc/localtime:ro \
   crazymax/snmpd:latest
 ```
 
@@ -56,6 +57,7 @@ $ docker run -d --name snmpd \
   --privileged \
   -p 161:161/udp \
   -v /proc:/hostproc \
+  -v /etc/localtime:/etc/localtime:ro \
   -v $(pwd)/snmpd.conf:/etc/snmpd.conf \
   crazymax/snmpd:latest
 ```

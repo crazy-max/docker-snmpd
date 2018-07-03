@@ -11,4 +11,5 @@ services:
         protocol: udp
     volumes:
       - /proc:/hostproc
+      - /etc/localtime:/etc/localtime:ro
     restart: always
