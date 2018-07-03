@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - VERSION=latest
+    - VERSION=5.7.3
     - GITHUB_REPO=crazy-max/docker-snmpd
     - DOCKER_USERNAME=crazymax
     - DOCKER_REPONAME=snmpd
@@ -19,7 +19,15 @@ before_install:
   - sudo apt-get update
   - docker --version
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
-  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH, DOCKER_TAG=$VERSION"
+  - export DOCKER_TAG=$(if [ "$BRANCH" == "master" ]; then echo "latest"; else echo $BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH, DOCKER_TAG=$DOCKER_TAG"
+
+install:
+  - |
+    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+    --build-arg VCS_REF=${TRAVIS_COMMIT::8} \
+    --build-arg VERSION=${VERSION} \
+    -t $DOCKER_USERNAME/$DOCKER_REPONAME .
 
 before_script:
   - docker run -d -p 8161:161 -v /proc:/hostproc --name $DOCKER_REPONAME $DOCKER_USERNAME/$DOCKER_REPONAME
@@ -27,18 +35,16 @@ before_script:
   - docker logs $DOCKER_REPONAME
 
 script:
-  - |
-    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-    --build-arg VCS_REF=${TRAVIS_COMMIT::8} \
-    --build-arg VERSION=${VERSION} \
-    -t $DOCKER_USERNAME/$DOCKER_REPONAME .
+  - docker ps | grep $DOCKER_REPONAME
 
 after_success:
   - test $TRAVIS_PULL_REQUEST = false
     && echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+    && docker tag $DOCKER_USERNAME/$DOCKER_REPONAME $DOCKER_USERNAME/$DOCKER_REPONAME:$DOCKER_TAG
     && docker tag $DOCKER_USERNAME/$DOCKER_REPONAME $DOCKER_USERNAME/$DOCKER_REPONAME:$VERSION
     && docker push $DOCKER_USERNAME/$DOCKER_REPONAME
     && echo "$QUAY_PASSWORD" | docker login quay.io --username "$QUAY_USERNAME" --password-stdin
+    && docker tag $DOCKER_USERNAME/$DOCKER_REPONAME quay.io/$DOCKER_USERNAME/$DOCKER_REPONAME:$DOCKER_TAG
     && docker tag $DOCKER_USERNAME/$DOCKER_REPONAME quay.io/$DOCKER_USERNAME/$DOCKER_REPONAME:$VERSION
     && docker push quay.io/$QUAY_USERNAME/$QUAY_REPONAME
 
