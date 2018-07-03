@@ -5,7 +5,6 @@ services:
     image: crazymax/snmpd
     container_name: snmpd
     privileged: true
-    read_only: true
     ports:
       - target: 161
         published: 161

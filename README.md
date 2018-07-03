@@ -44,7 +44,6 @@ You can also use the following minimal command :
 ```bash
 $ docker run -d --name snmpd \
   --privileged \
-  --read-only \
   -p 161:161/udp \
   -v /proc:/hostproc \
   crazymax/snmpd:latest
@@ -55,7 +54,6 @@ You can also mount your own `snmpd.conf` :
 ```bash
 $ docker run -d --name snmpd \
   --privileged \
-  --read-only \
   -p 161:161/udp \
   -v /proc:/hostproc \
   -v $(pwd)/snmpd.conf:/etc/snmpd.conf \
