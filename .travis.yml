@@ -31,7 +31,7 @@ install:
     -t $DOCKER_USERNAME/$DOCKER_REPONAME .
 
 before_script:
-  - docker run -d -p 8161:161 -v /proc:/hostproc --name $DOCKER_REPONAME $DOCKER_USERNAME/$DOCKER_REPONAME
+  - docker run -d -p 8161:161 -v /:/rootfs --name $DOCKER_REPONAME $DOCKER_USERNAME/$DOCKER_REPONAME
   - sleep 10
   - docker logs $DOCKER_REPONAME
 

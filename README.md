@@ -16,7 +16,7 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 ## Features
 
-* SNMP daemon patched to be able to monitor on CoreOS (use `/hostproc` instead of `/proc`)
+* SNMP daemon patched to be able to monitor on CoreOS (use `/rootfs/{dev|etc|proc|sys}`)
 * Fix [CVE-2015-5621](https://nvd.nist.gov/vuln/detail/CVE-2015-5621)
 * IPv6 disabled
 
@@ -26,7 +26,7 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 ## Usage
 
-> :warning: snmpd has been patched to use `/hostproc` and not `/proc`.
+> :warning: snmpd has been patched to use ` /rootfs/{dev|etc|proc|sys}`.
 
 ### Docker Compose
 
@@ -45,7 +45,7 @@ You can also use the following minimal command :
 $ docker run -d --name snmpd \
   --privileged \
   -p 161:161/udp \
-  -v /proc:/hostproc \
+  -v /:/rootfs:ro \
   -v /etc/localtime:/etc/localtime:ro \
   crazymax/snmpd:latest
 ```
@@ -56,7 +56,7 @@ You can also mount your own `snmpd.conf` :
 $ docker run -d --name snmpd \
   --privileged \
   -p 161:161/udp \
-  -v /proc:/hostproc \
+  -v /:/rootfs:ro \
   -v /etc/localtime:/etc/localtime:ro \
   -v $(pwd)/snmpd.conf:/etc/snmpd.conf \
   crazymax/snmpd:latest
@@ -67,7 +67,7 @@ $ docker run -d --name snmpd \
 If you've got the following error :
 
 ```
-Cannot statfs /hostproc/sys/fs/binfmt_misc: Symbolic link loop
+Cannot statfs /rootfs/proc/sys/fs/binfmt_misc: Symbolic link loop
 ```
 
 Restart this service :
