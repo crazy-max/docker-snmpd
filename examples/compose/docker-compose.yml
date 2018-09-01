@@ -1,4 +1,4 @@
-version: '3.2'
+version: "3.2"
 
 services:
   snmpd:
@@ -10,6 +10,6 @@ services:
         published: 161
         protocol: udp
     volumes:
-      - /:/rootfs:ro
-      - /etc/localtime:/etc/localtime:ro
+      - "/:/rootfs:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     restart: always
