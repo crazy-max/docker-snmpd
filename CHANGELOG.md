@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.7.3-RC4 (2018/09/16)
+
+* Alpine Linux 3.8
+
 ## 5.7.3-RC3 (2018/07/16)
 
 * Now mount the host file system to `/rootfs`
