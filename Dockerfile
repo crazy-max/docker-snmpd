@@ -7,7 +7,7 @@ ARG VERSION
 LABEL maintainer="CrazyMax" \
   org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.name="snmpd" \
-  org.label-schema.description="SNMP daemon image based on Alpine Linux" \
+  org.label-schema.description="SNMP daemon" \
   org.label-schema.version=$VERSION \
   org.label-schema.url="https://github.com/crazy-max/docker-snmpd" \
   org.label-schema.vcs-ref=$VCS_REF \
@@ -17,7 +17,7 @@ LABEL maintainer="CrazyMax" \
 
 ENV SNMPD_VERSION="5.7.3"
 
-ADD patchs /tmp/
+COPY patchs /tmp/
 
 RUN apk add --update --no-cache \
     curl \
@@ -64,7 +64,7 @@ RUN apk add --update --no-cache \
   && apk del build-dependencies \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ADD assets /
+COPY assets /
 
 EXPOSE 161/udp
 
