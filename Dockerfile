@@ -21,9 +21,11 @@ COPY patchs /tmp/
 
 RUN apk add --update --no-cache \
     curl \
+    libressl \
     perl \
     perl-net-snmp \
     tzdata \
+    zlib \
   && apk --update --no-cache add -t build-dependencies \
     build-base \
     file \
