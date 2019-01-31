@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.7.3-RC4 (2019/01/31)
+
+* Alpine Linux 3.9
+
 ## 5.7.3-RC4 (2018/09/16)
 
 * Alpine Linux 3.8
