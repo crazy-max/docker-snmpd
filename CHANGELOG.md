@@ -1,5 +1,10 @@
 # Changelog
 
+## 5.7.3-RC7 (2019/10/20)
+
+* Switch to GitHub Actions
+* :warning: Stop publishing Docker image on Quay
+
 ## 5.7.3-RC6 (2019/06/24)
 
 * Alpine Linux 3.10
