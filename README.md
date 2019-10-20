@@ -1,14 +1,13 @@
 <p align="center"><a href="https://github.com/crazy-max/docker-snmpd" target="_blank"><img height="128"src="https://raw.githubusercontent.com/crazy-max/docker-snmpd/master/.res/docker-snmpd.jpg"></a></p>
 
 <p align="center">
-  <a href="https://hub.docker.com/r/crazymax/snmpd/"><img src="https://img.shields.io/badge/dynamic/json.svg?label=version&query=$.results[1].name&url=https://hub.docker.com/v2/repositories/crazymax/snmpd/tags&style=flat-square" alt="Latest Version"></a>
-  <a href="https://travis-ci.com/crazy-max/docker-snmpd"><img src="https://img.shields.io/travis/com/crazy-max/docker-snmpd/master.svg?style=flat-square" alt="Build Status"></a>
+  <a href="https://github.com/crazy-max/docker-snmpd/actions?workflow=build"><img src="https://github.com/crazy-max/docker-snmpd/workflows/build/badge.svg" alt="Build Status"></a>
+  <a href="https://hub.docker.com/r/crazymax/snmpd/"><img src="https://img.shields.io/docker/stars/crazymax/snmpd.svg?style=flat-square" alt="Docker Stars"></a>
   <a href="https://hub.docker.com/r/crazymax/snmpd/"><img src="https://img.shields.io/docker/stars/crazymax/snmpd.svg?style=flat-square" alt="Docker Stars"></a>
   <a href="https://hub.docker.com/r/crazymax/snmpd/"><img src="https://img.shields.io/docker/pulls/crazymax/snmpd.svg?style=flat-square" alt="Docker Pulls"></a>
-  <a href="https://quay.io/repository/crazymax/snmpd"><img src="https://quay.io/repository/crazymax/snmpd/status?style=flat-square" alt="Docker Repository on Quay"></a>
   <a href="https://www.codacy.com/app/crazy-max/docker-snmpd"><img src="https://img.shields.io/codacy/grade/0c877ee889a34aa790e41e21b1a44dcf.svg?style=flat-square" alt="Code Quality"></a>
-  <br /><a href="https://www.patreon.com/crazymax"><img src="https://img.shields.io/badge/donate-patreon-fb664e.svg?style=flat-square" alt="Support me on Patreon"></a>
-  <a href="https://www.paypal.me/crazyws"><img src="https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square" alt="Donate Paypal"></a>
+  <br /><a href="https://www.patreon.com/crazymax"><img src="https://img.shields.io/badge/donate-patreon-f96854.svg?logo=patreon&style=flat-square" alt="Support me on Patreon"></a>
+  <a href="https://www.paypal.me/crazyws"><img src="https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square" alt="Donate Paypal"></a>
 </p>
 
 ## About
